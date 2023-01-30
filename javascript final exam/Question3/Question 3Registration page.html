@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+</head>
+<body>
+    <h1>
+        Registration Form
+    </h1>
+    <input type="text" placeholder="Mr/Mrs" id="title" required>
+    <br>
+    <input type="text" placeholder="FirstName" id="firstName" required>
+    <br>
+    <input type="text" placeholder="LastName" id="lastName" required>
+    <br>
+    <input type="email" placeholder="email" id="email" required>
+    <br>
+    <input type="password" placeholder="password" id="password" required>
+    <br>
+    <input type="password" placeholder="confirmPassword" id="confirmPassword" required>
+    <br>
+    <input type="checkbox">without select you can't Registration
+    <br>
+    <button onclick="sendData()">Registration</button>
+    <p id="p"></p>
+    
+    <script>
+        function sendData()
+        {
+
+            let myObj = {
+  title: document.getElementById("title").value,
+  firstName: document.getElementById("firstName").value,
+  lastName: document.getElementById("lastName").value,
+  email: document.getElementById("email").value,
+  password: document.getElementById("password").value,
+  confirmPassword:document.getElementById("confirmPassword").value,
+  acceptTerms: true
+}
+
+
+fetch(" https://real-pear-fly-kilt.cyclic.app/accounts/register", {
+    method: 'POST',
+  body: JSON.stringify(myObj),
+  headers: {
+    'Content-Type': 'application/json'
+  }
+} ).then(y=> p.json())
+.then(p=> {
+    console.log(p);
+    
+})
+        }
+      
+    </script>
+
+</body>
+</html>
